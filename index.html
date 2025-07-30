@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple To-Do List</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>My To-Do  List</h2>
+        <form action="/add" method="post" class="add-form">
+            <input type="text" name="task" placeholder="Add new task..." required>
+            <button type="submit">Add</button>
+        </form>
+        <ul class="todo-list">
+            {% for task in tasks %}
+            <li>
+                {{ task }}
+                <a href="/delete/{{ loop.index0 }}" class="delete-btn">Delete</a>
+            </li>
+            {% else %}
+            <li>No tasks yet!</li>
+            {% endfor %} 
+        </ul>
+    </div>
+</body>
+</html>
